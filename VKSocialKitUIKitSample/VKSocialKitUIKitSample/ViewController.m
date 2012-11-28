@@ -24,11 +24,28 @@
     }];
 }
 
+- (void)pressLaunchFeedback:(id)sender{
+     [TestFlight openFeedbackView];
+}
+
+- (void)pressCheckPoint:(id)sendeR{
+    [TestFlight passCheckpoint:@"TestCheckPoint"];
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSLog(@"テストフライトサイコー！！");
+    
 	// Do any additional setup after loading the view, typically from a nib.
     [self installButtonNamed:@"Tweet" inPosition:CGPointMake(0, 0)];
+    
+    [self installButtonNamed:@"LaunchFeedback" inPosition:CGPointMake(0, 100)];
+    
+    
+    [self installButtonNamed:@"CheckPoint" inPosition:CGPointMake(100, 0)];
 }
 
 - (void)didReceiveMemoryWarning

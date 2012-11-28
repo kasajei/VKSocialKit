@@ -45,13 +45,7 @@
     // socail frameworkがある場合 iOS6以上
     if([VKSocialKit hasSocialFramework])
     {
-        // アカウントがあるかどうかの確認
-        if([VKSocialFWController isLogin:socialServiceType]){
-            [self postWithSocialFW:post];
-        }else{
-            // アカウントがない場合
-            [VKSocialFWController showNotAccountSetting:post vc:self];
-        }
+        [self postWithSocialFW:post];
         return;
     }
     
@@ -69,7 +63,6 @@
 
 
 - (void)postToSocialService:(VKSocialType )socialType initialText:(NSString *)socialText addImage:(UIImage *)socialImage addURLWithString:(NSString *)socialURLWithString complete:(void(^)(BOOL success))complete{
-    
     VKPostModel *post = [VKPostModel create:socialType text:socialText image:socialImage url:socialURLWithString complete:complete];
     [self post:post];
 }

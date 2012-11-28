@@ -12,15 +12,19 @@
 
 @implementation VKTwitterFWController
 
++ (BOOL)isLogin{
+    return [TWTweetComposeViewController canSendTweet];
+}
+
 #pragma mark LifeCycle
--(id)initWithViewController:(UIViewController *)vc{
+- (id)initWithViewController:(UIViewController *)vc{
     if ((self = [self init])) {
         self.vc = vc;
     }
     return self;
 }
 
--(void)post:(VKPostModel *)post{
+- (void)post:(VKPostModel *)post{
     TWTweetComposeViewController *twitterController = [[TWTweetComposeViewController alloc] init];
     [twitterController setCompletionHandler:^(TWTweetComposeViewControllerResult result)
      {
