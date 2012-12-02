@@ -10,9 +10,54 @@
 #import <QuartzCore/QuartzCore.h>
 
 @implementation VKScreenShot
-+ (UIImage *) captureOpenGLScreen {
-    
-	CGSize size = [UIScreen mainScreen].applicationFrame.size;
+
+#pragma mark Connection to VKAdView
++ (void)addBannerTo:(UIView *)view{
+    if (NSClassFromString(@"VKAdView")) {
+        NSArray *subviews = view.subviews;
+        for (UIView *view in subviews) {
+            if ([view isKindOfClass:NSClassFromString(@"VKAdView")]) {
+                if ([view respondsToSelector:@selector(addOriginalBanner)]) {
+                    [view performSelector:@selector(addOriginalBanner)];
+                }
+            }
+        }
+    }
+}
+
++ (void)removeBannerFrom:(UIView *)view{
+    if (NSClassFromString(@"VKAdView")) {
+        NSArray *subviews = view.subviews;
+        for (UIView *view in subviews) {
+            if ([view isKindOfClass:NSClassFromString(@"VKAdView")]) {
+                if ([view respondsToSelector:@selector(removeOriginalBanner)]) {
+                    [view performSelector:@selector(removeOriginalBanner)];
+                }
+            }
+        }
+    }
+}
+
+// cocos2dの時に使う
++ (UIImageView *)getOriginalBannerImage{
+    UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    if (NSClassFromString(@"VKAdView")) {
+        NSArray *subviews = vc.view.subviews;
+        for (UIView *view in subviews) {
+            if ([view isKindOfClass:NSClassFromString(@"VKAdView")]) {
+                if ([view respondsToSelector:@selector(getOriginalBannerImage)]) {
+                    return [view performSelector:@selector(getOriginalBannerImage)];
+                }
+            }
+        }
+    }
+    return nil;
+}
+
+
+#pragma mark
++ (UIImage *) captureOpenGL{
+    CGSize size = [UIScreen mainScreen].applicationFrame.size;
     CGFloat screenScale = [[UIScreen mainScreen] scale];
     size = CGSizeMake(size.width * screenScale, size.height * screenScale);
     NSLog(@"%f",size.width);
@@ -64,7 +109,36 @@
 }
 
 
++ (UIImage *) captureOpenGLScreen {
+    
+    // connection To VKAdView
+    UIImageView *originalBanner = [self getOriginalBannerImage];
+    if ([originalBanner isKindOfClass:[UIImageView class]]) {
+        UIImage *image = [self captureOpenGL];
+        
+        CGFloat screenScale = [[UIScreen mainScreen] scale];
+        
+        // 画像を合成
+        CGSize size = image.size;
+        UIImage *resultImage;
+        UIGraphicsBeginImageContext(size);
+        [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+        [originalBanner.image drawInRect:originalBanner.frame];
+        resultImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+
+        return resultImage;
+    }else{
+        // ない場合はそのまま渡す
+        return [self captureOpenGL];
+    }
+}
+
+
 + (UIImage *) captureScreen :(UIView *)view{
+    // VKAdViewがのっている時に、自社広告をのせる
+    [self addBannerTo:view];
+    
     UIGraphicsBeginImageContext(view.bounds.size);
     [view.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
@@ -78,6 +152,9 @@
     [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
     resultImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    
+    // VKAdViewがのっている時に、自社広告を剥がす
+    [self removeBannerFrom:view];
     return resultImage;
 }
 
