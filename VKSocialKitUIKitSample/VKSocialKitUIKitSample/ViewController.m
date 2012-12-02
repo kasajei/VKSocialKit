@@ -17,10 +17,12 @@
 @implementation ViewController
 
 - (void)pressTweet:(id)sender{
-    [self postScreenShotToSocialService:kVKTwitter initialText:@"test" addURLWithString:nil complete:^(BOOL success){
-        if (success) {
-            NSLog(@"おめでとう");
-        }
+    VKPostModel *post = [[VKPostModel alloc] init];
+    post.text = @"テスト";
+    [post setScreenShot:self.view];
+    
+    [self post:post complete:^(BOOL success){
+        NSLog(@"おっけー");
     }];
 }
 

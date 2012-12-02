@@ -11,9 +11,13 @@
 
 @interface VKPostModel : NSObject
 @property VKSocialType socialType;
-@property(nonatomic, retain) NSString *text;
-@property(nonatomic, retain) UIImage *image;
-@property(nonatomic, retain) NSString *url;
+@property(nonatomic, strong) NSString *text;
+@property(nonatomic, strong) UIImage *image;
+@property(nonatomic, strong) NSString *url;
+@property(nonatomic, assign) UIViewController *vc;
 @property(nonatomic, copy) void (^complete)(BOOL succuess);
-+ (id)create:(VKSocialType)socialType text:(NSString *)text image:(UIImage *)image url:(NSString *)url complete:(void(^)(BOOL success))complete;
+
+- (void)setScreenShot:(UIView *)view;
+- (void)setScreenShotOfVC;
+- (void)setGLScreenShot;
 @end

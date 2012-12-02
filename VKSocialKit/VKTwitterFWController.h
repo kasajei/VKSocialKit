@@ -11,7 +11,5 @@
 
 @interface VKTwitterFWController : NSObject
 + (BOOL)isLogin;
-- (id)initWithViewController:(UIViewController *)vc;
-@property(nonatomic, assign)UIViewController *vc;
 - (void)post:(VKPostModel *)post;
 @end

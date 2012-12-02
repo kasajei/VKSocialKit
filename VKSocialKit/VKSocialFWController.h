@@ -12,8 +12,6 @@
 
 @interface VKSocialFWController : NSObject
 + (BOOL)isLogin:(NSString *)socialServiceType;
-+ (void)showNotAccountSetting:(VKPostModel *)post vc:(UIViewController *)vc;
-- (id)initWithViewController:(UIViewController *)vc;
-@property(nonatomic, assign) UIViewController *vc;
++ (void)showNotAccountSetting:(VKPostModel *)post;
 - (void)post:(VKPostModel *)post;
 @end

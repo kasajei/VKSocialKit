@@ -7,14 +7,26 @@
 //
 
 #import "VKPostModel.h"
+#import "VKScreenShot.h"
 
 @implementation VKPostModel
-+ (id)create:(VKSocialType)socialType text:(NSString *)text image:(UIImage *)image url:(NSString *)url complete:(void(^)(BOOL success))complete{
-    VKPostModel *post = [[VKPostModel alloc] init];
-    post.text = text;
-    post.image = image;
-    post.url = url;
-    post.complete = complete;
-    return post;
+#pragma get method
+-(UIViewController *)vc{
+    if (_vc)
+        self.vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    return _vc;
+}
+
+#pragma mark screenshot
+- (void)setScreenShot:(UIView *)view{
+    self.image = [VKScreenShot captureScreen:view];
+}
+
+- (void)setScreenShotOfVC{
+    self.image = [VKScreenShot captureScreen:self.vc.view];
+}
+
+- (void)setGLScreenShot{
+    self.image = [VKScreenShot captureOpenGLScreen];
 }
 @end

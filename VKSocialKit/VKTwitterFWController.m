@@ -16,14 +16,6 @@
     return [TWTweetComposeViewController canSendTweet];
 }
 
-#pragma mark LifeCycle
-- (id)initWithViewController:(UIViewController *)vc{
-    if ((self = [self init])) {
-        self.vc = vc;
-    }
-    return self;
-}
-
 - (void)post:(VKPostModel *)post{
     TWTweetComposeViewController *twitterController = [[TWTweetComposeViewController alloc] init];
     [twitterController setCompletionHandler:^(TWTweetComposeViewControllerResult result)
@@ -44,7 +36,7 @@
                  break;
          }
          NSLog(@"%@", message);
-         [self.vc dismissViewControllerAnimated:YES completion:^{
+         [post.vc dismissViewControllerAnimated:YES completion:^{
              if (post.complete) {
                  post.complete(success);
              }
@@ -53,7 +45,7 @@
     [twitterController setInitialText:post.text];
     [twitterController addImage:post.image];
     [twitterController addURL:[NSURL URLWithString:post.url]];
-    [self.vc presentViewController:twitterController animated:YES completion:nil];
+    [post.vc presentViewController:twitterController animated:YES completion:nil];
 }
 
 

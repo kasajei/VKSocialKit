@@ -44,7 +44,6 @@
 		93C5213D1663C6E500CDEE39 /* VKScreenShot.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C521311663C6E500CDEE39 /* VKScreenShot.m */; };
 		93C5213E1663C6E500CDEE39 /* VKSocialFWController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C521331663C6E500CDEE39 /* VKSocialFWController.m */; };
 		93C5213F1663C6E500CDEE39 /* VKSocialKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C521351663C6E500CDEE39 /* VKSocialKit.m */; };
-		93C521401663C6E500CDEE39 /* VKTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C521381663C6E500CDEE39 /* VKTwitter.m */; };
 		93C521411663C6E500CDEE39 /* VKTwitterFWController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C5213A1663C6E500CDEE39 /* VKTwitterFWController.m */; };
 		93C521471663C7AF00CDEE39 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C521431663C7AF00CDEE39 /* libTestFlight.a */; };
 		93C521481663C7AF00CDEE39 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 93C521441663C7AF00CDEE39 /* README.md */; };
@@ -123,8 +122,6 @@
 		93C521331663C6E500CDEE39 /* VKSocialFWController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKSocialFWController.m; sourceTree = "<group>"; };
 		93C521341663C6E500CDEE39 /* VKSocialKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKSocialKit.h; sourceTree = "<group>"; };
 		93C521351663C6E500CDEE39 /* VKSocialKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKSocialKit.m; sourceTree = "<group>"; };
-		93C521371663C6E500CDEE39 /* VKTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKTwitter.h; sourceTree = "<group>"; };
-		93C521381663C6E500CDEE39 /* VKTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKTwitter.m; sourceTree = "<group>"; };
 		93C521391663C6E500CDEE39 /* VKTwitterFWController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKTwitterFWController.h; sourceTree = "<group>"; };
 		93C5213A1663C6E500CDEE39 /* VKTwitterFWController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKTwitterFWController.m; sourceTree = "<group>"; };
 		93C521431663C7AF00CDEE39 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
@@ -301,21 +298,11 @@
 				93C521331663C6E500CDEE39 /* VKSocialFWController.m */,
 				93C521341663C6E500CDEE39 /* VKSocialKit.h */,
 				93C521351663C6E500CDEE39 /* VKSocialKit.m */,
-				93C521361663C6E500CDEE39 /* VKTWitter */,
 				93C521391663C6E500CDEE39 /* VKTwitterFWController.h */,
 				93C5213A1663C6E500CDEE39 /* VKTwitterFWController.m */,
 			);
 			name = VKSocialKit;
 			path = ../../VKSocialKit;
-			sourceTree = "<group>";
-		};
-		93C521361663C6E500CDEE39 /* VKTWitter */ = {
-			isa = PBXGroup;
-			children = (
-				93C521371663C6E500CDEE39 /* VKTwitter.h */,
-				93C521381663C6E500CDEE39 /* VKTwitter.m */,
-			);
-			path = VKTWitter;
 			sourceTree = "<group>";
 		};
 		93C521421663C7AF00CDEE39 /* TestFlightSDK1.1 */ = {
@@ -462,7 +449,6 @@
 				93C5213D1663C6E500CDEE39 /* VKScreenShot.m in Sources */,
 				93C5213E1663C6E500CDEE39 /* VKSocialFWController.m in Sources */,
 				93C5213F1663C6E500CDEE39 /* VKSocialKit.m in Sources */,
-				93C521401663C6E500CDEE39 /* VKTwitter.m in Sources */,
 				93C521411663C6E500CDEE39 /* VKTwitterFWController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

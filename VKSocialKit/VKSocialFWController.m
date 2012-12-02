@@ -9,7 +9,6 @@
 #import "VKSocialFWController.h"
 #import <Social/Social.h>
 #import "VKSocialKit.h"
-#import "VKTwitter.h"
 
 
 @implementation VKSocialFWController
@@ -20,12 +19,11 @@
     return [SLComposeViewController isAvailableForServiceType:socialServiceType];
 }
 
-+ (void)showNotAccountSetting:(VKPostModel *)post vc:(UIViewController *)vc{
++ (void)showNotAccountSetting:(VKPostModel *)post{
     NSString *title;
     switch (post.socialType) {
         case kVKTwitter:
-            [[VKTwitter createWithViewController:vc withPost:post] noAccount];
-            return;
+            title = @"No Facebook Accounts";
             break;
         case kVKFacebook:
             title = @"No Facebook Accounts";
@@ -40,14 +38,6 @@
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
     [alertView show];
-}
-
-#pragma mark LifeCycle
--(id)initWithViewController:(UIViewController *)vc{
-    if ((self = [self init])) {
-        self.vc = vc;
-    }
-    return self;
 }
 
 #pragma mark PostMethod
@@ -73,7 +63,7 @@
          }
          NSLog(@"%@", message);
          
-         [self.vc dismissViewControllerAnimated:YES completion:^{
+         [post.vc dismissViewControllerAnimated:YES completion:^{
              if (post.complete) {
                  post.complete(success);
              }
@@ -82,7 +72,7 @@
     [socialController setInitialText:post.text];
     [socialController addImage:post.image];
     [socialController addURL:[NSURL URLWithString:post.url]];
-    [self.vc presentViewController:socialController animated:YES completion:nil];
+    [post.vc presentViewController:socialController animated:YES completion:nil];
 
 }
 @end

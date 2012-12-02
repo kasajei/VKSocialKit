@@ -12,11 +12,6 @@
 
 @interface UIViewController (VKSocialController)
 // post
-- (void)post:(VKPostModel *)post;
-// すべての引数あり
-- (void)postToSocialService:(VKSocialType )socialType initialText:(NSString *)socialText addImage:(UIImage *)socialImage addURLWithString:(NSString *)socialURLWithString complete:(void(^)(BOOL success))complete;
-// screenshotを取る
-- (void)postScreenShotToSocialService:(VKSocialType )socialType initialText:(NSString *)socialText addURLWithString:(NSString *)socialURLWithString complete:(void(^)(BOOL success))complete;
-// openGLのscreenshotを取る
-- (void)postGLScreenShotToSocialService:(VKSocialType )socialType initialText:(NSString *)socialText addURLWithString:(NSString *)socialURLWithString complete:(void(^)(BOOL success))complete;
+- (void)post:(VKPostModel *)post complete:(void(^)(BOOL success))complete;
+- (void)post:(VKPostModel *)post withScreenShot:(BOOL)flag complete:(void(^)(BOOL success))complete;
 @end
