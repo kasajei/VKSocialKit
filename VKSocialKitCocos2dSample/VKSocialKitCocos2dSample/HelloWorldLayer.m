@@ -66,8 +66,11 @@
 		
 		// Achievement Menu Item using blocks
 		CCMenuItem *itemAchievement = [CCMenuItemFont itemWithString:@"Tweet" block:^(id sender) {
-			[VKSocialKit postGLScreenShotToSocialService:kVKTwitter initialText:@"test" addURLWithString:nil complete:^(BOOL success){
-                NSLog(@"OK");
+			VKPostModel *post = [[VKPostModel alloc] init];
+            post.text = @"test";
+            [post setGLScreenShot];
+            [VKSocialKit post:post complete:^(BOOL success){
+                NSLog(@"tweet完了");
             }];
 		}];
 

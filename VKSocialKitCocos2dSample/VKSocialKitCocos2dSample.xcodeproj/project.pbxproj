@@ -140,7 +140,6 @@
 		93C520C21662418D00CDEE39 /* VKTwitterFWController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C520BD1662418D00CDEE39 /* VKTwitterFWController.m */; };
 		93C520C41662419B00CDEE39 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C520C31662419B00CDEE39 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		93C520C61662419F00CDEE39 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C520C51662419F00CDEE39 /* Twitter.framework */; };
-		93C520D516625E8D00CDEE39 /* VKTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C520D416625E8D00CDEE39 /* VKTwitter.m */; };
 		93C520D816625F0B00CDEE39 /* VKPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C520D716625F0B00CDEE39 /* VKPostModel.m */; };
 /* End PBXBuildFile section */
 
@@ -419,8 +418,6 @@
 		93C520BD1662418D00CDEE39 /* VKTwitterFWController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKTwitterFWController.m; sourceTree = "<group>"; };
 		93C520C31662419B00CDEE39 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		93C520C51662419F00CDEE39 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
-		93C520D316625E8D00CDEE39 /* VKTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKTwitter.h; sourceTree = "<group>"; };
-		93C520D416625E8D00CDEE39 /* VKTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKTwitter.m; sourceTree = "<group>"; };
 		93C520D616625F0A00CDEE39 /* VKPostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKPostModel.h; sourceTree = "<group>"; };
 		93C520D716625F0B00CDEE39 /* VKPostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKPostModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -865,7 +862,6 @@
 		93C520B31662418D00CDEE39 /* VKSocialKit */ = {
 			isa = PBXGroup;
 			children = (
-				93C520D216625E7D00CDEE39 /* VKTWitter */,
 				93C520B41662418D00CDEE39 /* UIViewController+VKSocialController.h */,
 				93C520B51662418D00CDEE39 /* UIViewController+VKSocialController.m */,
 				93C520B61662418D00CDEE39 /* VKScreenShot.h */,
@@ -881,15 +877,6 @@
 			);
 			name = VKSocialKit;
 			path = ../VKSocialKit;
-			sourceTree = "<group>";
-		};
-		93C520D216625E7D00CDEE39 /* VKTWitter */ = {
-			isa = PBXGroup;
-			children = (
-				93C520D316625E8D00CDEE39 /* VKTwitter.h */,
-				93C520D416625E8D00CDEE39 /* VKTwitter.m */,
-			);
-			path = VKTWitter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1074,7 +1061,6 @@
 				93C520C01662418D00CDEE39 /* VKSocialFWController.m in Sources */,
 				93C520C11662418D00CDEE39 /* VKSocialKit.m in Sources */,
 				93C520C21662418D00CDEE39 /* VKTwitterFWController.m in Sources */,
-				93C520D516625E8D00CDEE39 /* VKTwitter.m in Sources */,
 				93C520D816625F0B00CDEE39 /* VKPostModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1181,6 +1167,7 @@
 				93C520B21662417400CDEE39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
