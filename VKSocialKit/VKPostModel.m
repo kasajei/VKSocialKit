@@ -12,7 +12,7 @@
 @implementation VKPostModel
 #pragma get method
 -(UIViewController *)vc{
-    if (_vc)
+    if (!_vc)
         self.vc = [UIApplication sharedApplication].keyWindow.rootViewController;
     return _vc;
 }

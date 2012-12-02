@@ -73,6 +73,6 @@
     [socialController addImage:post.image];
     [socialController addURL:[NSURL URLWithString:post.url]];
     [post.vc presentViewController:socialController animated:YES completion:nil];
-
+    NSLog(@"post clas : %@" ,NSStringFromClass([post.vc class]));
 }
 @end

@@ -46,6 +46,7 @@
         for (UIView *view in subviews) {
             if ([view isKindOfClass:NSClassFromString(@"VKAdView")]) {
                 if ([view respondsToSelector:@selector(getOriginalBannerImage)]) {
+                    NSLog(@"getOriginalBannerImage");
                     return [view performSelector:@selector(getOriginalBannerImage)];
                 }
             }
@@ -114,16 +115,21 @@
     // connection To VKAdView
     UIImageView *originalBanner = [self getOriginalBannerImage];
     if ([originalBanner isKindOfClass:[UIImageView class]]) {
-        UIImage *image = [self captureOpenGL];
+        NSLog(@"test original banner %@",originalBanner.image);
         
         CGFloat screenScale = [[UIScreen mainScreen] scale];
+        CGRect doubleFrame = CGRectMake(originalBanner.frame.origin.x * screenScale, originalBanner.frame.origin.y * screenScale, originalBanner.frame.size.width * screenScale, originalBanner.frame.size.height * screenScale);
+        
+        UIImage *image = [self captureOpenGL];
+        
+        
         
         // 画像を合成
         CGSize size = image.size;
         UIImage *resultImage;
         UIGraphicsBeginImageContext(size);
         [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
-        [originalBanner.image drawInRect:originalBanner.frame];
+        [originalBanner.image drawInRect:doubleFrame];
         resultImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
 
