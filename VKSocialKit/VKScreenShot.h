@@ -11,4 +11,6 @@
 @interface VKScreenShot : NSObject
 + (UIImage *) captureOpenGLScreen ;
 + (UIImage *) captureScreen :(UIView*)view;
++ (UIImage *) blendAdImageOn:(UIImage *)image;
 @end
+
