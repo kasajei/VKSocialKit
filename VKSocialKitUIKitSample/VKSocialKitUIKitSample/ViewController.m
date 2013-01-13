@@ -18,6 +18,7 @@
 
 - (void)pressTweet:(id)sender{
     VKPostModel *post = [[VKPostModel alloc] init];
+    post.socialType = kVKTwitter;
     post.text = @"テスト";
     [post setScreenShot:self.view];
     
@@ -26,28 +27,23 @@
     }];
 }
 
-- (void)pressLaunchFeedback:(id)sender{
-     [TestFlight openFeedbackView];
-}
-
-- (void)pressCheckPoint:(id)sendeR{
-    [TestFlight passCheckpoint:@"TestCheckPoint"];
+- (void)pressFacebook:(id)sender{
+    VKPostModel *post = [[VKPostModel alloc] init];
+    post.socialType = kVKFacebook;
+    post.text = @"テスト";
+    [post setScreenShot:self.view];
     
+    [self post:post complete:^(BOOL success){
+        NSLog(@"おっけー");
+    }];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSLog(@"テストフライトサイコー！！");
-    
 	// Do any additional setup after loading the view, typically from a nib.
     [self installButtonNamed:@"Tweet" inPosition:CGPointMake(0, 0)];
-    
-    [self installButtonNamed:@"LaunchFeedback" inPosition:CGPointMake(0, 100)];
-    
-    
-    [self installButtonNamed:@"CheckPoint" inPosition:CGPointMake(100, 0)];
+    [self installButtonNamed:@"Facebook" inPosition:CGPointMake(0, 50)];
 }
 
 - (void)didReceiveMemoryWarning
