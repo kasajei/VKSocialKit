@@ -106,24 +106,31 @@
 	CGContextRelease(context);
 	free(buffer);
 	free(pixels);
-	return outputImage;
+   	return outputImage;
 }
 
 
 + (UIImage *) captureOpenGLScreen {
-    
     // connection To VKAdView
+    UIImageView *originalBanner = [self getOriginalBannerImage];
+    if ([originalBanner isKindOfClass:[UIImageView class]]) {
+        UIImage *image = [self captureOpenGL];
+        return [self blendAdImageOn:image];
+
+    }else{
+        // ない場合はそのまま渡す
+        return [self captureOpenGL];
+    }
+}
+
+// ブレンドするメソッド
++ (UIImage *) blendAdImageOn:(UIImage *)image{
     UIImageView *originalBanner = [self getOriginalBannerImage];
     if ([originalBanner isKindOfClass:[UIImageView class]]) {
         NSLog(@"test original banner %@",originalBanner.image);
         
         CGFloat screenScale = [[UIScreen mainScreen] scale];
         CGRect doubleFrame = CGRectMake(originalBanner.frame.origin.x * screenScale, originalBanner.frame.origin.y * screenScale, originalBanner.frame.size.width * screenScale, originalBanner.frame.size.height * screenScale);
-        
-        UIImage *image = [self captureOpenGL];
-        
-        
-        
         // 画像を合成
         CGSize size = image.size;
         UIImage *resultImage;
@@ -132,11 +139,11 @@
         [originalBanner.image drawInRect:doubleFrame];
         resultImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-
+        
         return resultImage;
     }else{
         // ない場合はそのまま渡す
-        return [self captureOpenGL];
+        return image;
     }
 }
 
