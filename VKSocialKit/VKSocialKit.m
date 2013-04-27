@@ -69,25 +69,20 @@
 
 #pragma mark public method
 + (void)post:(VKPostModel *)post{
-    // VLSocialTypeから、iOS SocailFWやTwitterFWに対応したStringを作る
-//    NSString *socialServiceType = [VKSocialKit socialTypeToFrameworkString:post.socialType];
-    
-    // 優先順位が高いもの順
-    // socail frameworkがある場合 iOS6以上
+    // if we can use social framework
     if([VKSocialKit hasSocialFramework])
     {
         [self postWithSocialFW:post];
         return;
     }
     
-    // twitterでtwitter fwがある場合
+    // when iOS version is iOS5 and tweet
     if (post.socialType == kVKTwitter && [VKSocialKit hasTwitterFramework]) {
         [self postWithTwitterFW:post];
         return;
     }
     
-    // facebookでiOS5の場合
-    // TODO :
+    // when iOS version is under iOS6 and facebook
     [self notSupport];
 }
 

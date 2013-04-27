@@ -20,28 +20,28 @@
 - (void)pressTweet:(id)sender{
     VKPostModel *post = [[VKPostModel alloc] init];
     post.socialType = kVKTwitter;
-    post.text = @"テスト";
+    post.text = @"test text";
     [post setScreenShot:self.view];
     
     [self post:post complete:^(BOOL success){
-        NSLog(@"おっけー");
+        NSLog(@"complete");
     }];
 }
 
 - (void)pressFacebook:(id)sender{
     VKPostModel *post = [[VKPostModel alloc] init];
     post.socialType = kVKFacebook;
-    post.text = @"テスト";
+    post.text = @"test text";
     [post setScreenShot:self.view];
     
     [self post:post complete:^(BOOL success){
-        NSLog(@"おっけー");
+        NSLog(@"complete");
     }];
 }
 
 - (void)pressAccount:(id)sender {
     
-    [SVProgressHUD showWithStatus:@"ちょっと待てフォイ" maskType:SVProgressHUDMaskTypeGradient];
+    [SVProgressHUD showWithStatus:@"please wait.." maskType:SVProgressHUDMaskTypeGradient];
 	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
 	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
 	[accountStore requestAccessToAccountsWithType:accountType withCompletionHandler:^(BOOL granted, NSError *error) {
@@ -49,23 +49,22 @@
             _accountAry = [accountStore accountsWithAccountType:accountType];
             UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
             actionSheet.delegate = self;
-            [actionSheet setTitle:@"アカウントを選ぶフォイ"];
+            [actionSheet setTitle:@"selct your account"];
             for (ACAccount *account in _accountAry) {
                 [actionSheet addButtonWithTitle:[account username]];
             }
-            [actionSheet setCancelButtonIndex:[actionSheet addButtonWithTitle:@"キャンセルするフォイ"]];
+            [actionSheet setCancelButtonIndex:[actionSheet addButtonWithTitle:@"cancel"]];
             [actionSheet showInView:self.view];
             [SVProgressHUD dismiss];
 		}else{
-            NSLog(@"エラー？");
-            [SVProgressHUD showErrorWithStatus:@"アカウントがとれないフォイ"];
+            [SVProgressHUD showErrorWithStatus:@"error"];
         }
 	}];
 }
 
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"キャンセルするフォイ"]) {
+	if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"cancel"]) {
 		return;
 	}
     _selectedAccount = [_accountAry objectAtIndex:buttonIndex];

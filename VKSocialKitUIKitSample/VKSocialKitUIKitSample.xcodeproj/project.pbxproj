@@ -46,10 +46,6 @@
 		93C5213E1663C6E500CDEE39 /* VKSocialFWController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C521331663C6E500CDEE39 /* VKSocialFWController.m */; };
 		93C5213F1663C6E500CDEE39 /* VKSocialKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C521351663C6E500CDEE39 /* VKSocialKit.m */; };
 		93C521411663C6E500CDEE39 /* VKTwitterFWController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C5213A1663C6E500CDEE39 /* VKTwitterFWController.m */; };
-		93C521471663C7AF00CDEE39 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C521431663C7AF00CDEE39 /* libTestFlight.a */; };
-		93C521481663C7AF00CDEE39 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 93C521441663C7AF00CDEE39 /* README.md */; };
-		93C521491663C7AF00CDEE39 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 93C521451663C7AF00CDEE39 /* release_notes.md */; };
-		93C5214B1663C86100CDEE39 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C5214A1663C86100CDEE39 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,11 +122,6 @@
 		93C521351663C6E500CDEE39 /* VKSocialKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKSocialKit.m; sourceTree = "<group>"; };
 		93C521391663C6E500CDEE39 /* VKTwitterFWController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKTwitterFWController.h; sourceTree = "<group>"; };
 		93C5213A1663C6E500CDEE39 /* VKTwitterFWController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKTwitterFWController.m; sourceTree = "<group>"; };
-		93C521431663C7AF00CDEE39 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		93C521441663C7AF00CDEE39 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		93C521451663C7AF00CDEE39 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
-		93C521461663C7AF00CDEE39 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
-		93C5214A1663C86100CDEE39 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +130,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				93578B74172BBD5400AA31EC /* Accounts.framework in Frameworks */,
-				93C5214B1663C86100CDEE39 /* libz.dylib in Frameworks */,
 				931146DB166220990066BD18 /* OpenGLES.framework in Frameworks */,
 				931146C3166204BB0066BD18 /* Social.framework in Frameworks */,
 				931146C1166204B60066BD18 /* Twitter.framework in Frameworks */,
@@ -147,7 +137,6 @@
 				9311464A1661FDA20066BD18 /* UIKit.framework in Frameworks */,
 				9311464C1661FDA20066BD18 /* Foundation.framework in Frameworks */,
 				9311464E1661FDA20066BD18 /* CoreGraphics.framework in Frameworks */,
-				93C521471663C7AF00CDEE39 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,8 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				93578B73172BBD5400AA31EC /* Accounts.framework */,
-				93C5214A1663C86100CDEE39 /* libz.dylib */,
-				93C521421663C7AF00CDEE39 /* TestFlightSDK1.1 */,
 				931146DA166220990066BD18 /* OpenGLES.framework */,
 				931146C2166204BB0066BD18 /* Social.framework */,
 				931146C0166204B60066BD18 /* Twitter.framework */,
@@ -309,18 +296,6 @@
 			path = ../../VKSocialKit;
 			sourceTree = "<group>";
 		};
-		93C521421663C7AF00CDEE39 /* TestFlightSDK1.1 */ = {
-			isa = PBXGroup;
-			children = (
-				93C521431663C7AF00CDEE39 /* libTestFlight.a */,
-				93C521441663C7AF00CDEE39 /* README.md */,
-				93C521451663C7AF00CDEE39 /* release_notes.md */,
-				93C521461663C7AF00CDEE39 /* TestFlight.h */,
-			);
-			name = TestFlightSDK1.1;
-			path = ../TestFlightSDK1.1;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -398,8 +373,6 @@
 				931146601661FDA20066BD18 /* Default-568h@2x.png in Resources */,
 				931146631661FDA20066BD18 /* MainStoryboard.storyboard in Resources */,
 				931146BC1662045F0066BD18 /* SVProgressHUD.bundle in Resources */,
-				93C521481663C7AF00CDEE39 /* README.md in Resources */,
-				93C521491663C7AF00CDEE39 /* release_notes.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

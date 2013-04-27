@@ -65,7 +65,6 @@
     switch ([UIApplication sharedApplication].statusBarOrientation) {
         case UIInterfaceOrientationLandscapeLeft:
         case UIInterfaceOrientationLandscapeRight:
-            NSLog(@"よこ");
             size = CGSizeMake(size.height, size.width);
             break;
         default:
@@ -118,12 +117,10 @@
         return [self blendAdImageOn:image];
 
     }else{
-        // ない場合はそのまま渡す
         return [self captureOpenGL];
     }
 }
 
-// ブレンドするメソッド
 + (UIImage *) blendAdImageOn:(UIImage *)image{
     UIImageView *originalBanner = [self getOriginalBannerImage];
     if ([originalBanner isKindOfClass:[UIImageView class]]) {
@@ -131,7 +128,6 @@
         
         CGFloat screenScale = [[UIScreen mainScreen] scale];
         CGRect doubleFrame = CGRectMake(originalBanner.frame.origin.x * screenScale, originalBanner.frame.origin.y * screenScale, originalBanner.frame.size.width * screenScale, originalBanner.frame.size.height * screenScale);
-        // 画像を合成
         CGSize size = image.size;
         UIImage *resultImage;
         UIGraphicsBeginImageContext(size);
@@ -142,14 +138,12 @@
         
         return resultImage;
     }else{
-        // ない場合はそのまま渡す
         return image;
     }
 }
 
 
 + (UIImage *) captureScreen :(UIView *)view{
-    // VKAdViewがのっている時に、自社広告をのせる
     [self addBannerTo:view];
     
     UIGraphicsBeginImageContext(view.bounds.size);
@@ -157,7 +151,6 @@
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    // 変更するサイズ
     CGSize size = CGSizeMake(image.size.width * 2, image.size.height * 2);
     
     UIImage *resultImage;
@@ -166,7 +159,6 @@
     resultImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    // VKAdViewがのっている時に、自社広告を剥がす
     [self removeBannerFrom:view];
     return resultImage;
 }
