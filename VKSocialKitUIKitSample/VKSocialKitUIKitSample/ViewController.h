@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Accounts/Accounts.h>
 
-@interface ViewController : UIViewController
 
+@interface ViewController : UIViewController{
+    NSArray *_accountAry;
+    ACAccount *_selectedAccount;
+}
 @end

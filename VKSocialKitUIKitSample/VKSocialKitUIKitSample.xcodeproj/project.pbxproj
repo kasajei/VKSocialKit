@@ -39,6 +39,7 @@
 		931146C1166204B60066BD18 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931146C0166204B60066BD18 /* Twitter.framework */; };
 		931146C3166204BB0066BD18 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931146C2166204BB0066BD18 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		931146DB166220990066BD18 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931146DA166220990066BD18 /* OpenGLES.framework */; };
+		93578B74172BBD5400AA31EC /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93578B73172BBD5400AA31EC /* Accounts.framework */; };
 		93C5213B1663C6E500CDEE39 /* UIViewController+VKSocialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C5212D1663C6E500CDEE39 /* UIViewController+VKSocialController.m */; };
 		93C5213C1663C6E500CDEE39 /* VKPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C5212F1663C6E500CDEE39 /* VKPostModel.m */; };
 		93C5213D1663C6E500CDEE39 /* VKScreenShot.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C521311663C6E500CDEE39 /* VKScreenShot.m */; };
@@ -112,6 +113,7 @@
 		931146C0166204B60066BD18 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		931146C2166204BB0066BD18 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		931146DA166220990066BD18 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		93578B73172BBD5400AA31EC /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		93C5212C1663C6E500CDEE39 /* UIViewController+VKSocialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+VKSocialController.h"; sourceTree = "<group>"; };
 		93C5212D1663C6E500CDEE39 /* UIViewController+VKSocialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+VKSocialController.m"; sourceTree = "<group>"; };
 		93C5212E1663C6E500CDEE39 /* VKPostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKPostModel.h; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93578B74172BBD5400AA31EC /* Accounts.framework in Frameworks */,
 				93C5214B1663C86100CDEE39 /* libz.dylib in Frameworks */,
 				931146DB166220990066BD18 /* OpenGLES.framework in Frameworks */,
 				931146C3166204BB0066BD18 /* Social.framework in Frameworks */,
@@ -164,6 +167,7 @@
 		9311463A1661FDA20066BD18 = {
 			isa = PBXGroup;
 			children = (
+				93578B73172BBD5400AA31EC /* Accounts.framework */,
 				93C5214A1663C86100CDEE39 /* libz.dylib */,
 				93C521421663C7AF00CDEE39 /* TestFlightSDK1.1 */,
 				931146DA166220990066BD18 /* OpenGLES.framework */,
