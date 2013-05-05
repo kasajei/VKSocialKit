@@ -14,4 +14,6 @@
     NSArray *_accountAry;
     ACAccount *_selectedAccount;
 }
+
+@property(nonatomic, weak) UIButton *tweetBtn;
 @end

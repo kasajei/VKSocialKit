@@ -10,6 +10,8 @@
 #import "UIKitHelper.h"
 #import "SVProgressHUD.h"
 #import "UIViewController+VKSocialController.h"
+#import "VKTwitterAccountManager.h"
+#import "VKTwitterAPIManager.h"
 
 @interface ViewController ()<UIActionSheetDelegate>
 
@@ -42,24 +44,34 @@
 - (void)pressAccount:(id)sender {
     
     [SVProgressHUD showWithStatus:@"please wait.." maskType:SVProgressHUDMaskTypeGradient];
-	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-	[accountStore requestAccessToAccountsWithType:accountType withCompletionHandler:^(BOOL granted, NSError *error) {
-		if(granted) {
-            _accountAry = [accountStore accountsWithAccountType:accountType];
+	[[VKTwitterAccountManager sharedInstance] getTwitterIDListSaved:^(NSArray *usernameAry) {
+        
+    } new:^(NSArray *usernameAry) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
             UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
             actionSheet.delegate = self;
-            [actionSheet setTitle:@"selct your account"];
-            for (ACAccount *account in _accountAry) {
-                [actionSheet addButtonWithTitle:[account username]];
+            [actionSheet setTitle:@"Please select Account"];
+            for (NSString *username in usernameAry) {
+                [actionSheet addButtonWithTitle:username];
             }
             [actionSheet setCancelButtonIndex:[actionSheet addButtonWithTitle:@"cancel"]];
             [actionSheet showInView:self.view];
-            [SVProgressHUD dismiss];
-		}else{
-            [SVProgressHUD showErrorWithStatus:@"error"];
-        }
-	}];
+        });
+    } failure:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:error.description];
+    }];
+}
+
+- (void)pressTweetFromAccount:(id)sender{
+    if([VKTwitterAccountManager sharedInstance].username != NULL){
+        // if setting twitter account , tweet
+        [VKTwitterAPIManager statusesUpdate:@"Test Tweet #VKTwitter https://github.com/kasajei/VKSocialKit" complete:^(NSData *responseData) {
+            NSLog(@"complete tweet");
+        } failure:^(NSError *error) {
+            NSLog(@"failure %@", error.description);
+        }];
+    }
 }
 
 
@@ -67,8 +79,11 @@
 	if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"cancel"]) {
 		return;
 	}
-    _selectedAccount = [_accountAry objectAtIndex:buttonIndex];
-    NSLog(@"%@",_selectedAccount.username);
+    // アカウントを設定
+    NSString *username = [actionSheet buttonTitleAtIndex:buttonIndex];
+    [[VKTwitterAccountManager sharedInstance] selectTwitterUser:username];
+    NSString *tweetFromAccount = [NSString stringWithFormat:@"tweet from %@",username];
+    [self.tweetBtn setTitle:tweetFromAccount forState:UIControlStateNormal];
 }
 
 
@@ -79,6 +94,8 @@
     [self installButtonNamed:@"Tweet" inPosition:CGPointMake(0, 0)];
     [self installButtonNamed:@"Facebook" inPosition:CGPointMake(0, 50)];
     [self installButtonNamed:@"Account" inPosition:CGPointMake(0, 100)];
+    self.tweetBtn = [self installButtonNamed:@"TweetFromAccount" inPosition:CGPointMake(0, 150)];
+    [self.tweetBtn setSize:CGSizeMake(320, 50)];
 }
 
 - (void)didReceiveMemoryWarning

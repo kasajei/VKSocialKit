@@ -33,13 +33,15 @@
 		931146A11661FDC20066BD18 /* UIView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 931146951661FDC20066BD18 /* UIView+Helper.m */; };
 		931146A21661FDC20066BD18 /* UIViewController+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 931146971661FDC20066BD18 /* UIViewController+Helper.m */; };
 		931146A31661FDC20066BD18 /* UIWebView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 931146991661FDC20066BD18 /* UIWebView+Helper.m */; };
-		931146BC1662045F0066BD18 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 931146B91662045F0066BD18 /* SVProgressHUD.bundle */; };
-		931146BD1662045F0066BD18 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 931146BB1662045F0066BD18 /* SVProgressHUD.m */; };
 		931146BF1662046C0066BD18 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931146BE1662046C0066BD18 /* QuartzCore.framework */; };
 		931146C1166204B60066BD18 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931146C0166204B60066BD18 /* Twitter.framework */; };
 		931146C3166204BB0066BD18 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931146C2166204BB0066BD18 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		931146DB166220990066BD18 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931146DA166220990066BD18 /* OpenGLES.framework */; };
 		93578B74172BBD5400AA31EC /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93578B73172BBD5400AA31EC /* Accounts.framework */; };
+		9396B9B717364F3400A67808 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9396B9B417364F3400A67808 /* SVProgressHUD.bundle */; };
+		9396B9B817364F3400A67808 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9396B9B617364F3400A67808 /* SVProgressHUD.m */; };
+		9396B9BE17364F5C00A67808 /* VKTwitterAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9396B9BB17364F5C00A67808 /* VKTwitterAccountManager.m */; };
+		9396B9BF17364F5C00A67808 /* VKTwitterAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9396B9BD17364F5C00A67808 /* VKTwitterAPIManager.m */; };
 		93C5213B1663C6E500CDEE39 /* UIViewController+VKSocialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C5212D1663C6E500CDEE39 /* UIViewController+VKSocialController.m */; };
 		93C5213C1663C6E500CDEE39 /* VKPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C5212F1663C6E500CDEE39 /* VKPostModel.m */; };
 		93C5213D1663C6E500CDEE39 /* VKScreenShot.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C521311663C6E500CDEE39 /* VKScreenShot.m */; };
@@ -102,14 +104,18 @@
 		931146971661FDC20066BD18 /* UIViewController+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Helper.m"; sourceTree = "<group>"; };
 		931146981661FDC20066BD18 /* UIWebView+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+Helper.h"; sourceTree = "<group>"; };
 		931146991661FDC20066BD18 /* UIWebView+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+Helper.m"; sourceTree = "<group>"; };
-		931146B91662045F0066BD18 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		931146BA1662045F0066BD18 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		931146BB1662045F0066BD18 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		931146BE1662046C0066BD18 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		931146C0166204B60066BD18 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		931146C2166204BB0066BD18 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		931146DA166220990066BD18 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		93578B73172BBD5400AA31EC /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		9396B9B417364F3400A67808 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		9396B9B517364F3400A67808 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		9396B9B617364F3400A67808 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		9396B9BA17364F5C00A67808 /* VKTwitterAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKTwitterAccountManager.h; sourceTree = "<group>"; };
+		9396B9BB17364F5C00A67808 /* VKTwitterAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKTwitterAccountManager.m; sourceTree = "<group>"; };
+		9396B9BC17364F5C00A67808 /* VKTwitterAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKTwitterAPIManager.h; sourceTree = "<group>"; };
+		9396B9BD17364F5C00A67808 /* VKTwitterAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKTwitterAPIManager.m; sourceTree = "<group>"; };
 		93C5212C1663C6E500CDEE39 /* UIViewController+VKSocialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+VKSocialController.h"; sourceTree = "<group>"; };
 		93C5212D1663C6E500CDEE39 /* UIViewController+VKSocialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+VKSocialController.m"; sourceTree = "<group>"; };
 		93C5212E1663C6E500CDEE39 /* VKPostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKPostModel.h; sourceTree = "<group>"; };
@@ -161,7 +167,6 @@
 				931146C2166204BB0066BD18 /* Social.framework */,
 				931146C0166204B60066BD18 /* Twitter.framework */,
 				931146BE1662046C0066BD18 /* QuartzCore.framework */,
-				931146B81662045F0066BD18 /* SVProgressHUD */,
 				931146841661FDC20066BD18 /* UIKitHelper */,
 				9311464F1661FDA20066BD18 /* VKSocialKitUIKitSample */,
 				931146731661FDA20066BD18 /* VKSocialKitUIKitSampleTests */,
@@ -193,6 +198,8 @@
 		9311464F1661FDA20066BD18 /* VKSocialKitUIKitSample */ = {
 			isa = PBXGroup;
 			children = (
+				9396B9B917364F5C00A67808 /* VKTwitter */,
+				9396B9B317364F3400A67808 /* SVProgressHUD */,
 				93C5212B1663C6E500CDEE39 /* VKSocialKit */,
 				931146581661FDA20066BD18 /* AppDelegate.h */,
 				931146591661FDA20066BD18 /* AppDelegate.m */,
@@ -265,15 +272,27 @@
 			path = UIKitHelper;
 			sourceTree = "<group>";
 		};
-		931146B81662045F0066BD18 /* SVProgressHUD */ = {
+		9396B9B317364F3400A67808 /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				931146B91662045F0066BD18 /* SVProgressHUD.bundle */,
-				931146BA1662045F0066BD18 /* SVProgressHUD.h */,
-				931146BB1662045F0066BD18 /* SVProgressHUD.m */,
+				9396B9B417364F3400A67808 /* SVProgressHUD.bundle */,
+				9396B9B517364F3400A67808 /* SVProgressHUD.h */,
+				9396B9B617364F3400A67808 /* SVProgressHUD.m */,
 			);
 			name = SVProgressHUD;
-			path = ../SVProgressHUD;
+			path = ../../SVProgressHUD/SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		9396B9B917364F5C00A67808 /* VKTwitter */ = {
+			isa = PBXGroup;
+			children = (
+				9396B9BA17364F5C00A67808 /* VKTwitterAccountManager.h */,
+				9396B9BB17364F5C00A67808 /* VKTwitterAccountManager.m */,
+				9396B9BC17364F5C00A67808 /* VKTwitterAPIManager.h */,
+				9396B9BD17364F5C00A67808 /* VKTwitterAPIManager.m */,
+			);
+			name = VKTwitter;
+			path = ../../VKTwitter;
 			sourceTree = "<group>";
 		};
 		93C5212B1663C6E500CDEE39 /* VKSocialKit */ = {
@@ -372,7 +391,7 @@
 				9311465E1661FDA20066BD18 /* Default@2x.png in Resources */,
 				931146601661FDA20066BD18 /* Default-568h@2x.png in Resources */,
 				931146631661FDA20066BD18 /* MainStoryboard.storyboard in Resources */,
-				931146BC1662045F0066BD18 /* SVProgressHUD.bundle in Resources */,
+				9396B9B717364F3400A67808 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,13 +439,15 @@
 				931146A11661FDC20066BD18 /* UIView+Helper.m in Sources */,
 				931146A21661FDC20066BD18 /* UIViewController+Helper.m in Sources */,
 				931146A31661FDC20066BD18 /* UIWebView+Helper.m in Sources */,
-				931146BD1662045F0066BD18 /* SVProgressHUD.m in Sources */,
 				93C5213B1663C6E500CDEE39 /* UIViewController+VKSocialController.m in Sources */,
 				93C5213C1663C6E500CDEE39 /* VKPostModel.m in Sources */,
 				93C5213D1663C6E500CDEE39 /* VKScreenShot.m in Sources */,
 				93C5213E1663C6E500CDEE39 /* VKSocialFWController.m in Sources */,
 				93C5213F1663C6E500CDEE39 /* VKSocialKit.m in Sources */,
 				93C521411663C6E500CDEE39 /* VKTwitterFWController.m in Sources */,
+				9396B9B817364F3400A67808 /* SVProgressHUD.m in Sources */,
+				9396B9BE17364F5C00A67808 /* VKTwitterAccountManager.m in Sources */,
+				9396B9BF17364F5C00A67808 /* VKTwitterAPIManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
