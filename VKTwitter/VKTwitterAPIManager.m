@@ -13,19 +13,49 @@
 #import "VKSocialKit.h"
 
 @implementation VKTwitterAPIManager
+#pragma mark - ChangeRequestMethdo
++ (SLRequestMethod)getSLRequestMethodFromVKRequestMethod:(VKRequestMethod)requestMethod{
+    switch (requestMethod) {
+        case kVKRequestGET:
+            return SLRequestMethodGET;
+            break;
+        case kVKRequestPOST:
+            return SLRequestMethodPOST;
+            break;
+        default:
+            break;
+    }
+}
+
++ (TWRequestMethod)getTWRequestMethodFromVKRequestMethod:(VKRequestMethod)requestMethod{
+    switch (requestMethod) {
+        case kVKRequestGET:
+            return TWRequestMethodGET;
+            break;
+        case kVKRequestPOST:
+            return TWRequestMethodPOST;
+            break;
+        default:
+            break;
+    }
+}
+
 #pragma mark - Base Request
-+ (void)performRequestWithAPIURL:(NSString *)urlString params:(NSDictionary *)params complete:(void(^)(NSData *responseData))complete failure:(void(^)(NSError *error))failure{
-    NSURL *url = [NSURL URLWithString:urlString];
++ (void)performRequestWithAPIURL:(NSString *)urlString requestMethod:(VKRequestMethod)requestMethod params:(NSDictionary *)params complete:(void(^)(NSData *responseData))complete failure:(void(^)(NSError *error))failure{
+    NSString *fullRUL = [NSString stringWithFormat:@"https://api.twitter.com/1.1/%@", urlString];
+    NSURL *url = [NSURL URLWithString:fullRUL];
     id request;
     if ([VKSocialKit hasSocialFramework]) {
         request =[SLRequest requestForServiceType:SLServiceTypeTwitter
-                                       requestMethod:SLRequestMethodPOST
+                                       requestMethod:[self getSLRequestMethodFromVKRequestMethod:requestMethod]
                                                  URL:url
-                                          parameters:params];
+                                          parameters:params
+                  ];
     }else if( [VKSocialKit hasTwitterFramework]){
         request = [[TWRequest alloc] initWithURL:url
                                       parameters:params
-                                   requestMethod:TWRequestMethodPOST];
+                                   requestMethod:[self getTWRequestMethodFromVKRequestMethod:requestMethod]
+                   ];
     }else{
         return;
     }
@@ -44,15 +74,34 @@
         if (error) {
             failure(error);
         }else{
-            complete(responseData);
+            if (urlResponse.statusCode >= 200 && urlResponse.statusCode < 300) {
+                NSError *jsonError;
+                id JSON = [NSJSONSerialization JSONObjectWithData:responseData
+                                                                             options:NSJSONReadingAllowFragments
+                                                                               error:&jsonError];
+                if (JSON) {
+                    complete(JSON);
+                }else {
+                    NSLog(@"JSON Error: %@", [jsonError localizedDescription]);
+                    failure(jsonError);
+                }
+            }else{
+                failure(error);
+            }
         }
     }];
 }
 
 #pragma mark - APIs
-+ (void)statusesUpdate:(NSString *)status complete:(void(^)(NSData *responseData))complete failure:(void(^)(NSError *error))failure{
-    NSString *urlString = @"https://api.twitter.com/1.1/statuses/update.json";
++ (void)statusesUpdate:(NSString *)status complete:(void(^)(id JSON))complete failure:(void(^)(NSError *error))failure{
+    NSString *urlString = @"statuses/update.json";
     NSDictionary *params = [NSDictionary dictionaryWithObject:status forKey:@"status"];
-    [self performRequestWithAPIURL:urlString params:params complete:complete failure:failure];
+    [self performRequestWithAPIURL:urlString requestMethod:kVKRequestPOST params:params complete:complete failure:failure];
 }
+
++ (void)statussMentionsTimeline:(NSDictionary *)param complete:(void(^)(id JSON))complete failure:(void(^)(NSError* error))failure{
+    NSString *urlString = @"statuses/mentions_timeline.json";
+    [self performRequestWithAPIURL:urlString requestMethod:kVKRequestGET params:param complete:complete failure:failure];
+}
+
 @end

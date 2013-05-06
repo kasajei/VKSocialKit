@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum  VKRequestMethod{
+    kVKRequestGET,
+    kVKRequestPOST,
+}VKRequestMethod;
+
 @interface VKTwitterAPIManager : NSObject
-+ (void)statusesUpdate:(NSString *)status complete:(void(^)(NSData *responseData))complete failure:(void(^)(NSError *error))failure;
++ (void)statusesUpdate:(NSString *)status complete:(void(^)(id JSON))complete failure:(void(^)(NSError *error))failure;
++ (void)statussMentionsTimeline:(NSDictionary *)param complete:(void(^)(id JSON))complete failure:(void(^)(NSError* error))failure;
 @end

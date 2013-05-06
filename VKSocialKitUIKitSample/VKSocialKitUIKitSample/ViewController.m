@@ -19,6 +19,8 @@
 
 @implementation ViewController
 
+
+#pragma mark UserAction
 - (void)pressTweet:(id)sender{
     VKPostModel *post = [[VKPostModel alloc] init];
     post.socialType = kVKTwitter;
@@ -74,7 +76,39 @@
     }
 }
 
+- (void)pressAPITest:(id)sender{
+    if([VKTwitterAccountManager sharedInstance].username != NULL){
+        [VKTwitterAPIManager statussMentionsTimeline:nil complete:^(id JSON) {
+            NSArray *array = (NSArray *)JSON;
+            NSLog(@"complete %d", array.count);
+        } failure:^(NSError *error) {
+            NSLog(@"failure %@",error.description);
+        }];
+    }
+}
 
+
+#pragma mark UIViewController
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view, typically from a nib.
+    [self installButtonNamed:@"Tweet" inPosition:CGPointMake(0, 0)];
+    [self installButtonNamed:@"Facebook" inPosition:CGPointMake(0, 50)];
+    [self installButtonNamed:@"Account" inPosition:CGPointMake(0, 100)];
+    self.tweetBtn = [self installButtonNamed:@"TweetFromAccount" inPosition:CGPointMake(0, 150)];
+    [self.tweetBtn setSize:CGSizeMake(320, 50)];
+    [self installButtonNamed:@"APITest" inPosition:CGPointMake(0, 200)];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+#pragma  mark UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"cancel"]) {
 		return;
@@ -86,22 +120,5 @@
     [self.tweetBtn setTitle:tweetFromAccount forState:UIControlStateNormal];
 }
 
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    [self installButtonNamed:@"Tweet" inPosition:CGPointMake(0, 0)];
-    [self installButtonNamed:@"Facebook" inPosition:CGPointMake(0, 50)];
-    [self installButtonNamed:@"Account" inPosition:CGPointMake(0, 100)];
-    self.tweetBtn = [self installButtonNamed:@"TweetFromAccount" inPosition:CGPointMake(0, 150)];
-    [self.tweetBtn setSize:CGSizeMake(320, 50)];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end
