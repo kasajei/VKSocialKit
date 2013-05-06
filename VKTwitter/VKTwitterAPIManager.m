@@ -92,16 +92,51 @@
     }];
 }
 
-#pragma mark - APIs
-+ (void)statusesUpdate:(NSString *)status complete:(void(^)(id JSON))complete failure:(void(^)(NSError *error))failure{
+#pragma mark - APIs 
+// Twitter API https://dev.twitter.com/docs/api/1.1
+
+#pragma mark - Timelines
++ (void)statusesMentionsTimeline:(NSDictionary *)param complete:(void(^)(id JSON))complete failure:(void(^)(NSError* error))failure{
+    NSString *urlString = @"statuses/mentions_timeline.json";
+    [self performRequestWithAPIURL:urlString requestMethod:kVKRequestGET params:param complete:complete failure:failure];
+}
+
++ (void)statusesUserTimeline:(NSDictionary *)param complete:(void(^)(id JSON))complete failure:(void(^)(NSError* error))failure{
+    NSString *urlString = @"statuses/user_timeline.json";
+    [self performRequestWithAPIURL:urlString requestMethod:kVKRequestGET params:param complete:complete failure:failure];
+}
+
++ (void)statusesRetweetsOfMe:(NSDictionary *)param complete:(void(^)(id JSON))complete failure:(void(^)(NSError* error))failure{
+    NSString *urlString = @"statuses/retweets_of_me.json";
+    [self performRequestWithAPIURL:urlString requestMethod:kVKRequestGET params:param complete:complete failure:failure];
+}
+
+#pragma mark - Tweets
++ (void)statusesRetweets:(NSString *)tweetId param:(NSDictionary *)param complete:(void(^)(id JSON))complete failure:(void(^)(NSError* error))failure{
+    NSString *urlString = [NSString stringWithFormat:@"statuses/retweets/%@",tweetId];
+    [self performRequestWithAPIURL:urlString requestMethod:kVKRequestGET params:param complete:complete failure:failure];
+}
+
++ (void)statusesShow:(NSString *)tweetId param:(NSDictionary *)param complete:(void(^)(id JSON))complete failure:(void(^)(NSError* error))failure{
+    NSString *urlString = [NSString stringWithFormat:@"statuses/show/%@",tweetId];
+    [self performRequestWithAPIURL:urlString requestMethod:kVKRequestGET params:param complete:complete failure:failure];
+}
+
++ (void)statusesDestroy:(NSString *)tweetId param:(NSDictionary *)param complete:(void(^)(id JSON))complete failure:(void(^)(NSError* error))failure{
+    NSString *urlString = [NSString stringWithFormat:@"statuses/destroy/%@",tweetId];
+    [self performRequestWithAPIURL:urlString requestMethod:kVKRequestPOST params:param complete:complete failure:failure];
+}
+
++ (void)statusesUpdate:(NSString *)status param:(NSDictionary *)param complete:(void(^)(id JSON))complete failure:(void(^)(NSError *error))failure{
     NSString *urlString = @"statuses/update.json";
-    NSDictionary *params = [NSDictionary dictionaryWithObject:status forKey:@"status"];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:param];
+    [params setObject:status forKey:@"status"];
     [self performRequestWithAPIURL:urlString requestMethod:kVKRequestPOST params:params complete:complete failure:failure];
 }
 
-+ (void)statussMentionsTimeline:(NSDictionary *)param complete:(void(^)(id JSON))complete failure:(void(^)(NSError* error))failure{
-    NSString *urlString = @"statuses/mentions_timeline.json";
-    [self performRequestWithAPIURL:urlString requestMethod:kVKRequestGET params:param complete:complete failure:failure];
++ (void)statusesRetweet:(NSString *)tweetId param:(NSDictionary *)param complete:(void(^)(id JSON))complete failure:(void(^)(NSError* error))failure{
+    NSString *urlString = [NSString stringWithFormat:@"statuses/retweet/%@",tweetId];
+    [self performRequestWithAPIURL:urlString requestMethod:kVKRequestPOST params:param complete:complete failure:failure];
 }
 
 @end

@@ -78,7 +78,7 @@
 
 - (void)pressAPITest:(id)sender{
     if([VKTwitterAccountManager sharedInstance].username != NULL){
-        [VKTwitterAPIManager statussMentionsTimeline:nil complete:^(id JSON) {
+        [VKTwitterAPIManager statusesUserTimeline:nil complete:^(id JSON) {
             NSArray *array = (NSArray *)JSON;
             NSLog(@"complete %d", array.count);
         } failure:^(NSError *error) {
